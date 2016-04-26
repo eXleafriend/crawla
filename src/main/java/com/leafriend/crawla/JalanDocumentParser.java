@@ -26,6 +26,9 @@ public class JalanDocumentParser implements DocumentParser {
 
             String subject = contents.child(0).text();
             String body = contents.childNode(5).toString();
+            for (int i = 6; i < contents.childNodeSize(); i++)
+                body += "\n" + contents.childNode(i).toString();
+            body = body.replaceAll("<br>\n", "").trim();
             Comment comment = new Comment(age, gender, subject, body);
             comments.add(comment);
         }
