@@ -11,7 +11,7 @@ public class Main {
 
     private static ClassLoader classLoader = Main.class.getClassLoader();
 
-    public static List<AnonymousComment> parse(DocumentParser parser,
+    public static List<? extends AnonymousComment> parse(DocumentParser parser,
             String baseUri, String file) throws IOException {
 
         InputStream in = classLoader.getResourceAsStream(file);
