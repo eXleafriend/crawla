@@ -16,7 +16,8 @@ public class Main {
 
         InputStream in = classLoader.getResourceAsStream(file);
         Document document = Jsoup.parse(in, "UTF-8", baseUri);
-        List<AnonymousComment> comments = parser.parseDocument(document);
+        List<? extends AnonymousComment> comments = parser
+                .parseDocument(document);
         return comments;
 
     }

@@ -8,9 +8,9 @@ import org.jsoup.nodes.Document;
 public class JalanDocumentParser implements DocumentParser {
 
     @Override
-    public List<AnonymousComment> parseDocument(Document document) {
+    public List<Comment> parseDocument(Document document) {
 
-        List<AnonymousComment> comments = new ArrayList<>();
+        List<Comment> comments = new ArrayList<>();
 
         return comments;
 
