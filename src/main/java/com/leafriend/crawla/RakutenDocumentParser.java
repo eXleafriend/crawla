@@ -10,9 +10,9 @@ import org.jsoup.select.Elements;
 public class RakutenDocumentParser implements DocumentParser {
 
     @Override
-    public List<AnonymousComment> parseDocument(Document document) {
+    public List<AnonymousReview> parseDocument(Document document) {
 
-        List<AnonymousComment> comments = new ArrayList<>();
+        List<AnonymousReview> reviews = new ArrayList<>();
 
         Elements items = document.getElementsByClass("commentBox");
         for (Element item : items) {
@@ -22,28 +22,30 @@ public class RakutenDocumentParser implements DocumentParser {
 
             String subject = null;
 
-            Element contents = item.getElementsByClass("commentSentence").get(0);
+            Element contents = item.getElementsByClass("commentSentence")
+                    .get(0);
             String body = contents.childNode(0).toString();
             for (int i = 1; i < contents.childNodeSize(); i++)
                 body += "\n" + contents.childNode(i).toString();
             body += "\n";
             body = body.replaceAll("<br>\n", "").trim();
 
-            AnonymousComment comment;
+            AnonymousReview review;
             if (isAnonymous) {
-                comment = new AnonymousComment(subject, body);
+                review = new AnonymousReview(subject, body);
             } else {
                 String ageGender = userName.childNodes().get(2).toString();
-                ageGender = ageGender.trim().substring(1, ageGender.length() - 3);
+                ageGender = ageGender.trim().substring(1,
+                        ageGender.length() - 3);
                 String[] frags = ageGender.split("/");
                 int age = DocumentParser.parseAge(frags[0].trim());
                 Gender gender = Gender.parse(frags[1].trim());
-                comment = new Comment(age, gender, subject, body);
+                review = new Review(age, gender, subject, body);
             }
-            comments.add(comment);
+            reviews.add(review);
         }
 
-        return comments;
+        return reviews;
 
     }
 

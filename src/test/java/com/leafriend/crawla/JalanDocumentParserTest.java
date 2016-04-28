@@ -27,11 +27,11 @@ public class JalanDocumentParserTest {
         JalanDocumentParser parser = new JalanDocumentParser();
 
         // When
-        List<Comment> comments = parser.parseDocument(document);
+        List<Review> comments = parser.parseDocument(document);
 
         // Then
         assertThat(comments.size(), is(30));
-        Comment comment = comments.get(1);
+        Review comment = comments.get(1);
         assertThat(comment.getGender(), is(Gender.MALE));
         assertThat(comment.getAge(), is(20));
         assertThat(comment.getSubject(), is("予想以上に良かったです"));

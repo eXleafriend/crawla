@@ -1,12 +1,12 @@
 package com.leafriend.crawla;
 
-public class Comment extends AnonymousComment {
+public class Review extends AnonymousReview {
 
     private final int age;
 
     private final Gender gender;
 
-    public Comment(final int age, final Gender gender, final String subject,
+    public Review(final int age, final Gender gender, final String subject,
             final String body) {
         super(subject, body);
         this.age = age;

@@ -27,16 +27,16 @@ public class RakutenDocumentParserTest {
         RakutenDocumentParser parser = new RakutenDocumentParser();
 
         // When
-        List<AnonymousComment> comments = parser.parseDocument(document);
+        List<AnonymousReview> comments = parser.parseDocument(document);
 
         // Then
         assertThat(comments.size(), is(20));
-        AnonymousComment anonymous = comments.get(0);
-        assertThat(anonymous, is(not(instanceOf(Comment.class))));
+        AnonymousReview anonymous = comments.get(0);
+        assertThat(anonymous, is(not(instanceOf(Review.class))));
         assertThat(anonymous.getSubject(), is(nullValue()));
         assertThat(anonymous.getBody(), is("駅から近くて便利"));
 
-        Comment comment = (Comment) comments.get(1);
+        Review comment = (Review) comments.get(1);
         assertThat(comment.getGender(), is(Gender.MALE));
         assertThat(comment.getAge(), is(40));
         assertThat(comment.getSubject(), is(nullValue()));

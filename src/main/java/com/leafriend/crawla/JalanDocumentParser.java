@@ -10,9 +10,9 @@ import org.jsoup.select.Elements;
 public class JalanDocumentParser implements DocumentParser {
 
     @Override
-    public List<Comment> parseDocument(Document document) {
+    public List<Review> parseDocument(Document document) {
 
-        List<Comment> comments = new ArrayList<>();
+        List<Review> reviews = new ArrayList<>();
 
         Elements items = document.getElementsByClass("kuchikomi-list-cassette");
         for (Element item : items) {
@@ -29,11 +29,11 @@ public class JalanDocumentParser implements DocumentParser {
             for (int i = 6; i < contents.childNodeSize(); i++)
                 body += "\n" + contents.childNode(i).toString();
             body = body.replaceAll("<br>\n", "").trim();
-            Comment comment = new Comment(age, gender, subject, body);
-            comments.add(comment);
+            Review review = new Review(age, gender, subject, body);
+            reviews.add(review);
         }
 
-        return comments;
+        return reviews;
 
     }
 

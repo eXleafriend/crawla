@@ -11,14 +11,14 @@ public class Main {
 
     private static ClassLoader classLoader = Main.class.getClassLoader();
 
-    public static List<? extends AnonymousComment> parse(DocumentParser parser,
+    public static List<? extends AnonymousReview> parse(DocumentParser parser,
             String baseUri, String file) throws IOException {
 
         InputStream in = classLoader.getResourceAsStream(file);
         Document document = Jsoup.parse(in, "UTF-8", baseUri);
-        List<? extends AnonymousComment> comments = parser
+        List<? extends AnonymousReview> reviews = parser
                 .parseDocument(document);
-        return comments;
+        return reviews;
 
     }
 
