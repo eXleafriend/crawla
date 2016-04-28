@@ -13,18 +13,25 @@ import org.junit.*;
 
 public class RakutenDocumentParserTest {
 
-    @Test
-    public void testParseDocument() throws IOException {
+    private Document document;
 
-        // Given
+    private RakutenDocumentParser parser;
+
+    @Before
+    public void setUp() throws IOException {
 
         String file = "rakuten-1.html";
         String baseUri = "http://review.travel.rakuten.co.jp/hotel/voice/74664/";
 
         ClassLoader classLoader = Main.class.getClassLoader();
         InputStream in = classLoader.getResourceAsStream(file);
-        Document document = Jsoup.parse(in, "UTF-8", baseUri);
-        RakutenDocumentParser parser = new RakutenDocumentParser();
+        document = Jsoup.parse(in, "UTF-8", baseUri);
+        parser = new RakutenDocumentParser();
+
+    }
+
+    @Test
+    public void testParseDocument() throws IOException {
 
         // When
         List<AnonymousReview> comments = parser.parseDocument(document);
@@ -40,7 +47,8 @@ public class RakutenDocumentParserTest {
         assertThat(comment.getGender(), is(Gender.MALE));
         assertThat(comment.getAge(), is(40));
         assertThat(comment.getSubject(), is(nullValue()));
-        assertThat(comment.getBody(), is("週末出張（東京ビッグサイト）だったので1泊しました。\n気軽に泊れて温泉があり・・・イイ感じでした。\n黒船キャビン内、贅沢を言えば座ってテレビが見れるくらいの高さ（天井）が欲しいかな！"));
+        assertThat(comment.getBody(), is(
+                "週末出張（東京ビッグサイト）だったので1泊しました。\n気軽に泊れて温泉があり・・・イイ感じでした。\n黒船キャビン内、贅沢を言えば座ってテレビが見れるくらいの高さ（天井）が欲しいかな！"));
 
     }
 
