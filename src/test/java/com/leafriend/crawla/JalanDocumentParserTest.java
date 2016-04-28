@@ -42,6 +42,17 @@ public class JalanDocumentParserTest {
     }
 
     @Test
+    public void testCountPages() {
+
+        // When
+        int pageCount = parser.countPages(document);
+
+        // Then
+        assertThat(pageCount, is(2));
+
+    }
+
+    @Test
     public void testParseDocument() throws IOException {
 
         // When

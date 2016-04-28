@@ -16,6 +16,13 @@ public class JalanDocumentParser implements DocumentParser {
     }
 
     @Override
+    public int countPages(Document document) {
+        String text = document.getElementsByClass("pager_num").get(0).text();
+        text = text.substring(1, text.length() - 4);
+        return Integer.parseInt(text.split("/")[1]);
+    }
+
+    @Override
     public List<Review> parseDocument(Document document) {
 
         List<Review> reviews = new ArrayList<>();

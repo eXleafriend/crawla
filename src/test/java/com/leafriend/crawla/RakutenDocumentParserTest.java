@@ -42,6 +42,17 @@ public class RakutenDocumentParserTest {
     }
 
     @Test
+    public void testCountPages() {
+
+        // When
+        int pageCount = parser.countPages(document);
+
+        // Then
+        assertThat(pageCount, is(9));
+
+    }
+
+    @Test
     public void testParseDocument() throws IOException {
 
         // When

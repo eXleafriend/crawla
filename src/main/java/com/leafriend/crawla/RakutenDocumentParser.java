@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 public class RakutenDocumentParser implements DocumentParser {
@@ -13,6 +14,17 @@ public class RakutenDocumentParser implements DocumentParser {
     public String extractName(Document document) {
         Element div = document.getElementById("RthNameArea");
         return div.text();
+    }
+
+    @Override
+    public int countPages(Document document) {
+        Element pages = document.getElementsByClass("pagingNumber").get(0);
+        List<Node> children = pages.childNodes();
+        children = pages.child(0).childNodes();
+        String text = ((Element) children.get(children.size() - 2)).text();
+        // text = text.substring(1, text.length() - 4);
+        return Integer.parseInt(text);
+
     }
 
     @Override
