@@ -6,6 +6,8 @@ import org.jsoup.nodes.Document;
 
 public interface DocumentParser {
 
+    public String extractName(Document document);
+
     public List<? extends AnonymousReview> parseDocument(Document document);
 
     public static int parseAge(final String string) {

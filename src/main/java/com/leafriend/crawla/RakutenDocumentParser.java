@@ -10,6 +10,12 @@ import org.jsoup.select.Elements;
 public class RakutenDocumentParser implements DocumentParser {
 
     @Override
+    public String extractName(Document document) {
+        Element div = document.getElementById("RthNameArea");
+        return div.text();
+    }
+
+    @Override
     public List<AnonymousReview> parseDocument(Document document) {
 
         List<AnonymousReview> reviews = new ArrayList<>();

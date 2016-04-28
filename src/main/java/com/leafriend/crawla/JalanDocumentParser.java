@@ -10,6 +10,12 @@ import org.jsoup.select.Elements;
 public class JalanDocumentParser implements DocumentParser {
 
     @Override
+    public String extractName(Document document) {
+        Element div = document.getElementById("yado_header_hotel_name");
+        return div.text();
+    }
+
+    @Override
     public List<Review> parseDocument(Document document) {
 
         List<Review> reviews = new ArrayList<>();

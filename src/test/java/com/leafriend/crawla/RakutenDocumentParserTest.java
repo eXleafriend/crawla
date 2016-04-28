@@ -31,6 +31,17 @@ public class RakutenDocumentParserTest {
     }
 
     @Test
+    public void testExtractName() {
+
+        // When
+        String name = parser.extractName(document);
+
+        // Then
+        assertThat(name, is("お台場　大江戸温泉物語"));
+
+    }
+
+    @Test
     public void testParseDocument() throws IOException {
 
         // When
