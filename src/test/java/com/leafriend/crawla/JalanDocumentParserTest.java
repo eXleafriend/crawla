@@ -56,27 +56,27 @@ public class JalanDocumentParserTest {
     public void testNextPage() {
 
         // Given
-        String url = "http://www.jalan.net/yad321110/kuchikomi/?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=60&smlCd=241402&callbackHistFlg=1&distCd=01";
+        String url = "http://www.jalan.net/yad321110/kuchikomi/?screenId=UWW3001&yadNo=321110&stayMonth=&stayYear=&stayDay=&maxPrice=999999&rootCd=7701&dateUndecided=1&contHideFlg=1&minPrice=0&callbackHistFlg=1&smlCd=241402&distCd=01";
         String made;
-
-        // When
-        made = parser.makeUrl(url, 1);
-        // Then
-        assertThat(made, is(
-                "http://www.jalan.net/yad321110/kuchikomi/1.HTML?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=60&smlCd=241402&callbackHistFlg=1&distCd=01"));
 
         // When
         made = parser.makeUrl(url, 2);
         // Then
         assertThat(made, is(
-                "http://www.jalan.net/yad321110/kuchikomi/2.HTML?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=60&smlCd=241402&callbackHistFlg=1&distCd=01"));
+                "http://www.jalan.net/yad321110/kuchikomi/2.HTML?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=30&smlCd=241402&callbackHistFlg=1&distCd=01"));
 
         // When
         made = parser.makeUrl(url, 3);
-
         // Then
         assertThat(made, is(
                 "http://www.jalan.net/yad321110/kuchikomi/3.HTML?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=60&smlCd=241402&callbackHistFlg=1&distCd=01"));
+
+        // When
+        made = parser.makeUrl(url, 4);
+
+        // Then
+        assertThat(made, is(
+                "http://www.jalan.net/yad321110/kuchikomi/4.HTML?contHideFlg=1&yadNo=321110&rootCd=7701&dateUndecided=1&minPrice=0&maxPrice=999999&screenId=UWW3701&idx=90&smlCd=241402&callbackHistFlg=1&distCd=01"));
 
     }
 
