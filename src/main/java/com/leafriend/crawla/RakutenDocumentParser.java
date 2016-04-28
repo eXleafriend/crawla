@@ -28,6 +28,13 @@ public class RakutenDocumentParser implements DocumentParser {
     }
 
     @Override
+    public String makeUrl(String url, int page) {
+        String[] tokens = url.split("/");
+        return "http://review.travel.rakuten.co.jp/hotel/voice/" + tokens[4]
+                + "/?f_next=" + ((page - 1) * 20);
+    }
+
+    @Override
     public List<AnonymousReview> parseDocument(Document document) {
 
         List<AnonymousReview> reviews = new ArrayList<>();

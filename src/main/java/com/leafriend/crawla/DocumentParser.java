@@ -12,6 +12,8 @@ public interface DocumentParser {
 
     public List<? extends AnonymousReview> parseDocument(Document document);
 
+    public String makeUrl(String url, int page);
+
     public static int parseAge(final String string) {
         final String numbers;
         if (string.endsWith("代"))

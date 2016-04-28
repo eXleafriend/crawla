@@ -53,6 +53,21 @@ public class RakutenDocumentParserTest {
     }
 
     @Test
+    public void testNextPage() {
+
+        // Given
+        String url = "http://travel.rakuten.co.jp/HOTEL/137490/review.html";
+        String made;
+
+        // When
+        made = parser.makeUrl(url, 2);
+        // Then
+        assertThat(made, is(
+                "http://review.travel.rakuten.co.jp/hotel/voice/137490/?f_next=20"));
+
+    }
+
+    @Test
     public void testParseDocument() throws IOException {
 
         // When

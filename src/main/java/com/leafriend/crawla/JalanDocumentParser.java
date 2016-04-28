@@ -23,6 +23,14 @@ public class JalanDocumentParser implements DocumentParser {
     }
 
     @Override
+    public String makeUrl(String url, int page) {
+        String[] tokens = url.split("/");
+        tokens[5] = page + ".HTML" + tokens[5];
+        return tokens[0] + "/" + tokens[1] + "/" + tokens[2] + "/" + tokens[3]
+                + "/" + tokens[4] + "/" + tokens[5];
+    }
+
+    @Override
     public List<Review> parseDocument(Document document) {
 
         List<Review> reviews = new ArrayList<>();
